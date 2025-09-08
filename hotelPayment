@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+//A main application class to demonstrate the use of the Payment class
+public class HotelPayment {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double reservationAmount = 500.75;
+        
+        System.out.println("--- Welcome to the Hotel Payment System ---");
+        System.out.println("Your total reservation amount is: RM" + String.format("%.2f", reservationAmount));
+        System.out.println("Please select a payment method:");
+        System.out.println("1. Cash");
+        System.out.println("2. Cashless (Credit Card)");
+        System.out.print("Enter your choice (1 or 2): ");
+        
+        int choice = scanner.nextInt();
+        String paymentMethod;
+
+        if (choice == 1) {
+         paymentMethod = "Cash";
+            System.out.println("\nProcessing cash payment...");
+           //we assume transaction is completed
+            System.out.print("Please enter the amount of cash received: RM");
+            double cashReceived = scanner.nextDouble();
+
+            if (cashReceived >= reservationAmount) {
+                double change = cashReceived - reservationAmount;
+                System.out.println("Payment successful!");
+                System.out.println("Change due: RM" + String.format("%.2f", change));
+                
+                Payment cashPayment = new Payment(paymentMethod, reservationAmount);
+                cashPayment.logDetails();
+                
+            } else {
+                System.out.println("Insufficient cash. Payment failed.");
+            }
+
+        } else if (choice == 2) {
+            paymentMethod = "Cashless";
+            
+            // Complex payment method with additional steps
+            System.out.println("\nProcessing cashless payment...");
+            System.out.print("Enter your 16-digit card number: ");
+            String cardNumber = scanner.next();
+            
+            // Simple validation to simulate a payment gateway
+            if (cardNumber.length() == 16) {
+                System.out.println("Card details are valid. Processing...");
+                Payment cashlessPayment = new Payment(paymentMethod, reservationAmount);
+                cashlessPayment.logDetails();
+
+            } else {
+                System.out.println("Invalid card number. Payment failed.");
+            }
+            
+        } else {
+            System.out.println("Invalid choice. Please restart the application and try again.");
+        }
+
+        scanner.close();
+        System.out.println("\n--- Thank you for your payment. Please visit us again. ---");
+    }
+}
