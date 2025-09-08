@@ -1,0 +1,73 @@
+import java.util.Date;
+
+
+public class Payment {
+    private String paymentID;
+    private String method; //Represent payment method such as by cash or cashless
+    private double amount; 
+    private String status;
+    private Date paymentDate;
+}
+
+    //constructor for Payment class
+    public Payment(String paymentID,String method, double amount) {
+        this.paymentID = paymentID;
+        this.method = method;
+        this.amount = amount;
+        this.paymentDate = new Date();
+        this.status = "Completed";// we assume payment is success
+    }
+
+    //getters & accessor
+    public String getPaymentId() {
+        return paymentId;
+    }
+
+    public String getMethod() {
+        return method;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Date getPaymentDate() {
+        return paymentDate;
+    }
+
+    //setter & mutators
+      public void setPaymentID(String paymentID) {
+        this.paymentID = paymentID;
+    }
+
+    public void setMethod(String method) {
+        this.method = method;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setPaymentDate(Date paymentDate) {
+        this.paymentDate = paymentDate;
+
+    @Override
+    //toSTring method
+    public String toString() {
+        return "\n--- Payment Details ---\n" +
+               "ID: " + this.paymentID + "\n" +
+               "Amount: RM" + String.format("%.2f", this.amount) + "\n" +
+               "Method: " + this.method + "\n" +
+               "Status: " + this.status + "\n" +
+               "Date: " + this.paymentDate + "\n" +
+               "-----------------------";
+    }
+}
