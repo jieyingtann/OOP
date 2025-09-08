@@ -1,0 +1,17 @@
+//Cash payment method, extending the abstract PaymentMethod class to demonstrate inheritance.
+public class Cash extends PaymentMethod {
+
+//constructor for a Cash object
+    public Cash(double amount) {
+        this.amount = amount;
+        this.methodType = "Cash";
+    }
+
+    //Processes the cash payment
+     
+    @Override
+    public boolean processPayment() {
+        System.out.println("Processing cash payment of RM" + String.format("%.2f", this.amount) + "...");
+             return true;
+    }
+}
