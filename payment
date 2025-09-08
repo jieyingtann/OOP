@@ -7,7 +7,7 @@ public class Payment {
     private double amount; 
     private String status;
     private Date paymentDate;
-}
+   }
 
     //constructor for Payment class
     public Payment(String paymentID,String method, double amount) {
