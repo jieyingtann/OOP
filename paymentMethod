@@ -1,0 +1,27 @@
+//An abstract class for all payment method
+public abstract class PaymentMethod {
+    // data members
+    protected String methodType;
+    protected double amount;
+
+    //An abstract method for processing a payment 
+    public abstract boolean processPayment();
+
+    // getters & accessors
+    public String getMethodType() {
+        return methodType;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+    
+    //setters and mutators 
+    public void setMethodType(String MethodType){
+        this.methodType = methodType;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
+    }
+}
