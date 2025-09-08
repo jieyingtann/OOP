@@ -1,0 +1,33 @@
+//A concrete class representing a cashless payment method.
+//It inherits from the abstract PaymentMethod class
+public class Cashless extends PaymentMethod {
+    // Private attributes for card details,demonstrating encapsulation
+    private String cardNumber;
+    private String expiryDate;
+    private String cvv;
+
+    //Constructor for the Cashless class
+    public Cashless(double amount, String cardNumber, String expiryDate, String cvv) {
+        this.amount = amount;
+        this.methodType = "Cashless";
+        this.cardNumber = cardNumber;
+        this.expiryDate = expiryDate;
+        this.cvv = cvv;
+    }
+
+    //Simulate payment process by validate card details
+    @Override
+    public boolean processPayment() {
+        System.out.println("Processing cashless payment of RM" + String.format("%.2f", this.amount) + "...");
+        // Simple validation to simulate a payment gateway response
+        if (cardNumber != null && cardNumber.length() == 16 &&
+            expiryDate != null && expiryDate.length() == 5 &&
+            cvv != null && cvv.length() == 3) {
+            System.out.println("Card details are valid. Payment gateway processing...");
+            return true;
+        } else {
+            System.out.println("Invalid card details. Payment failed.");
+            return false;
+        }
+    }
+}
